@@ -17,6 +17,8 @@ import copy
 
 import matplotlib.pyplot as plt
 import matplotlib.cm
+from matplotlib import use
+use('Agg')
 import numpy as np
 
 import psr_utils

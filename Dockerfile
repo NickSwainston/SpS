@@ -14,6 +14,7 @@ WORKDIR /home/soft
 COPY . /home/soft
 RUN pip install . && \
     cythonize -i sps/src/C_Funct.pyx && \
-    chmod +x sps/sps.py
+    chmod +x sps/sps.py && \
+    cp sps/src/waterfaller/waterfaller.py sps
     
 ENV PATH="/home/soft/sps:${PATH}"
