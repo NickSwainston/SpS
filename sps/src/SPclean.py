@@ -6,6 +6,9 @@ from glob import glob
 
 import pandas as pd
 import numpy as np
+
+from matplotlib import use
+use('Agg')
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from tables.exceptions import HDF5ExtError

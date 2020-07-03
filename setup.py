@@ -27,5 +27,5 @@ setuptools.setup(
         'pandas>=0.23.0',
         'scipy>=0.19.1',
         'astropy>=2.0.2',
-      ],
+      ]
 )
