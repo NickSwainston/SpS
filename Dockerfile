@@ -8,7 +8,8 @@ RUN \
 RUN pip install Cython matplotlib
 
 RUN apt-get update && \
-    apt-get -y install gcc
+    apt-get -y install gcc \
+    procps
 
 WORKDIR /home/soft
 COPY . /home/soft
