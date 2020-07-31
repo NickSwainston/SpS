@@ -78,15 +78,15 @@ def puls_plot(pdf, puls, events, i, args):
 
   ev = events[events.Pulse == puls.name]  # Events in the pulse
 
-  #if args.fits is not None: 
-  #  col = 4
-  #  row = 2
-  #elif args.timeseries is not None: 
-  #  col = 3
-  #  row = 2
-  #else: 
-  col = 3
-  row = 1
+  if (args.fits is not None) or (args.timeseries is not None): 
+    row = 2
+  else:
+    row = 1
+  
+  if args.fits is not None: 
+    col = 4
+  else: 
+    col = 3
   
   gs = gridspec.GridSpec(row, col, wspace=0.5, hspace=0.5)
 
@@ -97,16 +97,16 @@ def puls_plot(pdf, puls, events, i, args):
   # DM vs Time (zoom on pulse)
   ax2 = plt.subplot(gs.new_subplotspec((0,1), 1, 1))
   puls_DM_Time(ax2, ev, events, puls)
+  
+  # S/N vs DM
+  ax5 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
+  puls_SNR_DM(ax5, ev)
 
   # Time series at different DMs and pulse profile
   if args.timeseries is not None:
     ax3 = plt.subplot(gs.new_subplotspec((1,0), 1, 2))
     ax4 = plt.subplot(gs.new_subplotspec((1,2), 1, 1))
     puls_dedispersed(ax3, ax4, puls, args)  
-  
-  # S/N vs DM
-  ax5 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
-  puls_SNR_DM(ax5, ev)
 
   # Dynamic spectra
   if args.fits is not None:
