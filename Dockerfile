@@ -1,4 +1,4 @@
-FROM continuumio/miniconda:4.7.12
+FROM continuumio/miniconda3
 
 COPY conda.yml .
 RUN \
