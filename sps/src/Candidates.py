@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-import Pulses
+from . import Pulses
 import C_Funct
 
 

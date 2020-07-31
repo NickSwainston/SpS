@@ -13,10 +13,10 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from tables.exceptions import HDF5ExtError
 
-import Events
-import Pulses
-import LSPplot
-import Candidates
+from . import Events
+from . import Pulses
+from . import LSPplot
+from . import Candidates
 
 
 
@@ -26,7 +26,7 @@ def main(args, vers=None):
   try:
     events = pd.read_hdf(args.filename, 'events')
     with pd.HDFStore(args.filename) as store:
-      db_keys = store.keys()
+      db_keys = list(store.keys())
     file_type = 'hdf5'
   except (IOError, HDF5ExtError) as e:
     events = Events.Loader(args)
@@ -36,7 +36,7 @@ def main(args, vers=None):
   if args.SNR_min is not None: events = events[events.Sigma >= args.SNR_min]
     
   if events.empty: 
-    print "No events found. Exiting"
+    print("No events found. Exiting")
     return
 
   # Load meta data
@@ -56,10 +56,10 @@ def main(args, vers=None):
    if '/pulses' in db_keys:
      pulses = pd.read_hdf(args.filename, 'pulses')
    else:
-     print "Pulses not present in the database. Exiting"
+     print("Pulses not present in the database. Exiting")
      return
   else:
-    print "Events have been loaded and stored into the HDF5 file. Exiting"
+    print("Events have been loaded and stored into the HDF5 file. Exiting")
     return
     
   if not args.no_filter: pulses = pulses[pulses.Rank == 0]
@@ -71,7 +71,7 @@ def main(args, vers=None):
   if args.N_min is not None: pulses = pulses[pulses.N_events >= args.N_min]
 
   if pulses.empty: 
-    print "No pulses found. Exiting"
+    print("No pulses found. Exiting")
     return
 
   # Load Candidates
@@ -81,11 +81,11 @@ def main(args, vers=None):
   cands = cands[cands.main_cand == 0]
       
   if cands.empty: 
-    print "No candidates found. Exiting"
+    print("No candidates found. Exiting")
     return
 
   if cands.shape[0] > 100:
-    print "{} candidates found, only the brightest 100 will be processed.".format(cands.shape[0])
+    print("{} candidates found, only the brightest 100 will be processed.".format(cands.shape[0]))
     cands = cands.head(100)
 
   cands = cands[ ((cands.N_pulses == 1) & (cands.Sigma >= args.single_cand_SNR)) | ((cands.N_pulses > 1) & (cands.Sigma >= args.multiple_cand_SNR)) ]

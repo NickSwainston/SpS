@@ -1,6 +1,6 @@
 import numpy as Num
 
-from psr_constants import *
+from .psr_constants import *
 
 def rotate(arr, bins):
     """

@@ -10,8 +10,8 @@ import warnings
 import os
 import os.path
 import numpy as np
-import sigproc
-import spectra
+from . import sigproc
+from . import spectra
 
 
 DEBUG = False
@@ -40,12 +40,12 @@ def create_filterbank_file(outfn, header, spectra=None, nbits=8, \
     header['nbits'] = nbits
     outfile = open(outfn, 'wb')
     outfile.write(sigproc.addto_hdr("HEADER_START", None))
-    for paramname in header.keys():
+    for paramname in list(header.keys()):
         if paramname not in sigproc.header_params:
             # Only add recognized parameters
             continue
         if verbose:
-            print "Writing header param (%s)" % paramname
+            print("Writing header param (%s)" % paramname)
         value = header[paramname]
         outfile.write(sigproc.addto_hdr(paramname, value))
     outfile.write(sigproc.addto_hdr("HEADER_END", None))
@@ -133,10 +133,10 @@ def read_header(filename, verbose=False):
     paramname = ""
     while (paramname != 'HEADER_END'):
         if verbose:
-            print "File location: %d" % filfile.tell()
+            print("File location: %d" % filfile.tell())
         paramname, val = sigproc.read_hdr_val(filfile, stdout=verbose)
         if verbose:
-            print "Read param %s (value: %s)" % (paramname, val)
+            print("Read param %s (value: %s)" % (paramname, val))
         if paramname not in ["HEADER_START", "HEADER_END"]:
             header[paramname] = val
     header_size = filfile.tell()
@@ -286,7 +286,7 @@ class FilterbankFile(object):
     def __getattr__(self, name):
         if name in self.header:
             if DEBUG:
-                print "Fetching header param (%s)" % name
+                print("Fetching header param (%s)" % name)
             val = self.header[name]
         else:
             raise ValueError("No FilterbankFile attribute called '%s'" % name)
@@ -298,7 +298,7 @@ class FilterbankFile(object):
         for param in sorted(self.header.keys()):
             if param in ("HEADER_START", "HEADER_END"):
                 continue
-            print "%s: %s" % (param, self.header[param])
+            print("%s: %s" % (param, self.header[param]))
 
 
 def main():

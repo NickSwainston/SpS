@@ -7,7 +7,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 import pandas as pd
 import numpy as np
 
-from waterfaller import waterfaller, psrfits, psr_utils
+from .waterfaller import waterfaller, psrfits, psr_utils
 
 
 import matplotlib as mpl
@@ -212,7 +212,7 @@ def hist_DM(ax, pulses, cand):
   #-------------------------
 
   # Histogram of pulses
-  ax.hist(pulses.DM.tolist(), bins=20, histtype='stepfilled', color=u'k', zorder=2)
+  ax.hist(pulses.DM.tolist(), bins=20, histtype='stepfilled', color='k', zorder=2)
 
   # Candidate DM
   ax.axvline(cand.DM, c='r', ls='-', linewidth=.2, zorder=3)
@@ -231,7 +231,7 @@ def hist_SNR(ax,pulses,cand):
   #----------------------------------------
 
   # Histogram of pulses
-  ax.hist(pulses.DM.tolist(), weights=pulses.Sigma.tolist(), bins=20, histtype='stepfilled', color=u'k', zorder=2)
+  ax.hist(pulses.DM.tolist(), weights=pulses.Sigma.tolist(), bins=20, histtype='stepfilled', color='k', zorder=2)
 
   # Candidate DM
   ax.axvline(cand.DM, c='r', ls='-', linewidth=.2, zorder=3)

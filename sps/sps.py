@@ -5,7 +5,7 @@ import argparse
 import subprocess
 import os
 
-from src import SPclean
+from .src import SPclean
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
@@ -53,7 +53,7 @@ def parser():
 
 
 def main():
-  print "The DataBase is being created"
+  print("The DataBase is being created")
 
   args = parser()
   if args.F_range is not None: args.F_range = sorted(args.F_range)
@@ -63,14 +63,14 @@ def main():
   scriptFolder = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
   git_folder = os.path.join(scriptFolder, '.git')
   vers = subprocess.check_output(['git','--git-dir',git_folder,'describe','--tags','--abbrev=0','--always']).strip()
-  print "L-SpS version used: {}".format(vers)
+  print("L-SpS version used: {}".format(vers))
   
   time0 = time.time()
 
   SPclean.main(args, vers=vers)
 
-  print "The DataBase has been created"
-  print "Time spent: {:.2f} s".format(time.time() - time0)
+  print("The DataBase has been created")
+  print("Time spent: {:.2f} s".format(time.time() - time0))
 
   return
 

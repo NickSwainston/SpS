@@ -21,12 +21,12 @@ import matplotlib.pyplot as plt
 import matplotlib.cm
 import numpy as np
 
-import psr_utils
-import rfifind
+from . import psr_utils
+from . import rfifind
 
-import psrfits
-import filterbank
-import spectra
+from . import psrfits
+from . import filterbank
+from . import spectra
 
 SWEEP_STYLES = ['r-', 'b-', 'g-', 'm-', 'c-']
 
