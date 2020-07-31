@@ -137,7 +137,7 @@ def waterfall(rawdatafile, start, duration, dm=None, nbins=None, nsub=None,\
     if (start_bin + nbinsextra) > rawdatafile.nspec-1:
         nbinsextra = rawdatafile.nspec-1-start_bin
 
-    data = rawdatafile.get_spectra(start_bin, nbinsextra)
+    data = rawdatafile.get_spectra(start_bin, abs(nbinsextra))
 
     # Masking
     if mask and maskfn:
