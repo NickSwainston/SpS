@@ -47,7 +47,7 @@ def parser():
   parser.add_argument('-timeseries', help="Glob expression of PRESTO .dat file for plotting.", default=None)
   parser.add_argument('-fits', help="Name of a fits file for plotting.", default=None)
   parser.add_argument('-mask', help="Name of a PRESTO .mask file for plotting.", default=None)
-  parser.add_argument('-sampling', help="The time of each sample in seconds." default=0.0001) #TODO make a function to read the fits of fil header
+  parser.add_argument('-sampling', help="The time of each sample in seconds.", default=0.0001) #TODO make a function to read the fits of fil header
   args = parser.parse_args()
   return args
 
