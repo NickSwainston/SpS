@@ -387,7 +387,10 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   # Plot dynamic spectra (dispersed and not) from a .fits file
   #-----------------------------------------------------------
 
-  if maskfn is not None: mask = True  
+  if args.mask is not None:
+    mask = True  
+  else:
+    mask = False
   duration = 20
   df = int(puls.Downfact)
   psrfits_file = psrfits.PsrfitsFile(args.fits)
