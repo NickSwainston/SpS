@@ -13,5 +13,5 @@ RUN apt-get update && \
 
 WORKDIR /home/soft
 COPY . /home/soft
-RUN pip install . && \
-    cythonize -i /opt/conda/lib/python3.7/site-packages/sps/src/C_Funct.pyx
+RUN cythonize -i /opt/conda/lib/python3.7/site-packages/sps/src/C_Funct.pyx && \
+    pip install .
