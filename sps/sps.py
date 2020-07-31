@@ -46,7 +46,7 @@ def parser():
   
   parser.add_argument('-timeseries', help="Glob expression of PRESTO .dat file for plotting.", default=None)
   parser.add_argument('-fits', help="Name of a fits file for plotting.", default=None)
-  #parser.add_argument('-mask', help="Name of a PRESTO .mask file for plotting.", default=None)
+  parser.add_argument('-mask', help="Name of a PRESTO .mask file for plotting.", default=None)
   args = parser.parse_args()
   return args
 
