@@ -195,6 +195,8 @@ class PsrfitsFile(object):
             data = np.array(data).squeeze()
         data = np.transpose(data)
         # Truncate data to desired interval
+        print(data.shape)
+        print(skip,trunc)
         if trunc > 0:
                 data = data[:, skip:-trunc]
         elif trunc == 0:
