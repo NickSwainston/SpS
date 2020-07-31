@@ -114,7 +114,7 @@ def puls_plot(pdf, puls, events, i, args):
     ax7 = plt.subplot(gs.new_subplotspec((0,3), 1, 1), sharey=ax6)
     if args.timeseries is None: ax4 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
     else: ax4 = None
-    puls_dynSpec(ax6, ax7, puls, prof_ax=ax4)
+    puls_dynSpec(ax6, ax7, puls, args, prof_ax=ax4)
   
   pdf.savefig(bbox_inches='tight', dpi=200)
   return
