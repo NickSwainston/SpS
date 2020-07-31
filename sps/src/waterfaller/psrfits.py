@@ -67,7 +67,7 @@ class PsrfitsFile(object):
     def __init__(self, psrfitsfn):
         if not os.path.isfile(psrfitsfn):
             raise ValueError("ERROR: File does not exist!\n\t({}})".format(psrfitsfn))
-        self.filename = psrfitsfn[0]
+        self.filename = psrfitsfn
         self.fits = pyfits.open(psrfitsfn, mode='readonly', memmap=True)
         self.specinfo = SpectraInfo(psrfitsfn) 
         self.header = self.fits[0].header # Primary HDU
