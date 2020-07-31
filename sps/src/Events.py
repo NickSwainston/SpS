@@ -20,8 +20,8 @@ def Loader(args):
   events = pd.read_csv(sp_file, delim_whitespace=True, dtype=np.float64, comment='#', names=col_name, usecols=[0,1,2,3,4])
   events.index.name = 'idx'
   
-  #events['Duration'] = events.Sampling * events.Downfact
-  #events.Duration = events.Duration.astype(np.float32)
+  events['Duration'] = events.Sampling * events.Downfact
+  events.Duration = events.Duration.astype(np.float32)
   events.Sample = events.Sample.astype(np.int32)
   
   events['Pulse'] = 0
