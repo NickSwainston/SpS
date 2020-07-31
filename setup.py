@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 if not os.path.exists('sps/version.py'):
-  vers = subprocess.check_output(['git','describe','--tags','--abbrev=0','--always']).strip()
+  vers = subprocess.check_output(['git','describe','--tags','--abbrev=0','--always']).decode('utf-8').strip()
   print(vers)
   with open('sps/version.py', 'a') as the_file:
           the_file.write('__version__ = "{}"\n'.format(vers))

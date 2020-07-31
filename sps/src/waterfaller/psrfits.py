@@ -66,11 +66,10 @@ def unpack_4bit(data):
 class PsrfitsFile(object):
     def __init__(self, psrfitsfn):
         if not os.path.isfile(psrfitsfn):
-            raise ValueError("ERROR: File does not exist!\n\t(%s)" % \
-                                psrfitsfn)
-        self.filename = psrfitsfn
+            raise ValueError("ERROR: File does not exist!\n\t({}})".format(psrfitsfn))
+        self.filename = psrfitsfn[0]
         self.fits = pyfits.open(psrfitsfn, mode='readonly', memmap=True)
-        self.specinfo = SpectraInfo([psrfitsfn]) 
+        self.specinfo = SpectraInfo(psrfitsfn) 
         self.header = self.fits[0].header # Primary HDU
         self.nbits = self.specinfo.bits_per_sample
         self.nchan = self.specinfo.num_channels
