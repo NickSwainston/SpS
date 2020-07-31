@@ -14,8 +14,4 @@ RUN apt-get update && \
 WORKDIR /home/soft
 COPY . /home/soft
 RUN pip install . && \
-    cythonize -i sps/src/C_Funct.pyx && \
-    chmod +x sps/sps.py
-    
-#ENV PATH="${PATH}:/home/soft/sps:/home/soft/sps/src/waterfaller"
-#ENV PYTHONPATH="/home/soft/sps:/home/soft/sps/src/waterfaller"
+    cythonize -i sps/src/C_Funct.pyx
