@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 from . import Pulses
-import C_Funct
+from . import C_Funct
 
 
 def Loader(pulses, args):

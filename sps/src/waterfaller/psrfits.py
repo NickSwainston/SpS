@@ -193,12 +193,12 @@ class PsrfitsFile(object):
             data = np.concatenate(data)
         else:
             data = np.array(data).squeeze()
-	data = np.transpose(data)
+        data = np.transpose(data)
         # Truncate data to desired interval
-	if trunc > 0:
-            data = data[:, skip:-trunc]
-	elif trunc == 0:
-            data = data[:, skip:]
+        if trunc > 0:
+                data = data[:, skip:-trunc]
+        elif trunc == 0:
+                data = data[:, skip:]
         else:
             raise ValueError("Number of bins to truncate is negative: %d" % trunc)
         if not self.specinfo.need_flipband:
@@ -209,7 +209,7 @@ class PsrfitsFile(object):
         else:
             freqs = self.freqs 
 
-	return spectra.Spectra(freqs, self.tsamp, data, \
+        return spectra.Spectra(freqs, self.tsamp, data, \
                                starttime=self.tsamp*startsamp, dm=0)
 
 

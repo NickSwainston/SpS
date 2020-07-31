@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 
-import C_Funct
+from . import C_Funct
 
 
 def Loader(args):

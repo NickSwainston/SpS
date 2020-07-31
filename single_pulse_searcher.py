@@ -2,10 +2,9 @@
 
 import time
 import argparse
-import subprocess
 import os
 
-from .src import SPclean
+from sps.src import SPclean
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
@@ -60,9 +59,10 @@ def main():
   if args.t_range is not None: args.t_range = sorted(args.t_range)
   if args.DM_range is not None: args.DM_range = sorted(args.DM_range)
   
-  scriptFolder = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-  git_folder = os.path.join(scriptFolder, '.git')
-  vers = subprocess.check_output(['git','--git-dir',git_folder,'describe','--tags','--abbrev=0','--always']).strip()
+  #scriptFolder = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+  #git_folder = os.path.join(scriptFolder, '.git')
+  from sps import version
+  vers = version.__version__
   print("L-SpS version used: {}".format(vers))
   
   time0 = time.time()
