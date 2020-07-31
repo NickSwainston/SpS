@@ -44,8 +44,8 @@ def parser():
   parser.add_argument('-single_cand_SNR', help="Minimum S/N of single candidates to consider.", default=6.5, type=float)
   parser.add_argument('-multiple_cand_SNR', help="Minimum S/N of repeated candidates to consider.", default=6.5, type=float)
   
-  #parser.add_argument('-timeseries', help="Glob expression of PRESTO .dat file for plotting.", default=None)
-  #parser.add_argument('-fits', help="Name of a fits file for plotting.", default=None)
+  parser.add_argument('-timeseries', help="Glob expression of PRESTO .dat file for plotting.", default=None)
+  parser.add_argument('-fits', help="Name of a fits file for plotting.", default=None)
   #parser.add_argument('-mask', help="Name of a PRESTO .mask file for plotting.", default=None)
   args = parser.parse_args()
   return args

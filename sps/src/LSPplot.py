@@ -98,19 +98,16 @@ def puls_plot(pdf, puls, events, i, args):
   ax2 = plt.subplot(gs.new_subplotspec((0,1), 1, 1))
   puls_DM_Time(ax2, ev, events, puls)
 
-  """ To be tested
   # Time series at different DMs and pulse profile
   if args.timeseries is not None:
     ax3 = plt.subplot(gs.new_subplotspec((1,0), 1, 2))
     ax4 = plt.subplot(gs.new_subplotspec((1,2), 1, 1))
     puls_dedispersed(ax3, ax4, puls, args)  
-  """
   
   # S/N vs DM
   ax5 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
   puls_SNR_DM(ax5, ev)
 
-  """ To be tested
   # Dynamic spectra
   if args.fits is not None:
     ax6 = plt.subplot(gs.new_subplotspec((1,3), 1, 1))
@@ -118,7 +115,6 @@ def puls_plot(pdf, puls, events, i, args):
     if args.timeseries is None: ax4 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
     else: ax4 = None
     puls_dynSpec(ax6, ax7, puls, ax_prof=ax4)
-  """
   
   pdf.savefig(bbox_inches='tight', dpi=200)
   return
