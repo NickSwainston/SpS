@@ -184,6 +184,7 @@ class PsrfitsFile(object):
         skip = startsamp - (startsub*self.nsamp_per_subint)
         endsub = int((startsamp+N)/self.nsamp_per_subint)
         trunc = ((endsub+1)*self.nsamp_per_subint) - (startsamp+N)
+        print(startsub, endsub)
         
         # Read data
         data = []
