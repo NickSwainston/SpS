@@ -253,8 +253,8 @@ def plot_waterfall(data, start, duration,
         times = (np.arange(data.numspectra)*data.dt + start)[..., :nbinlim]
         ax_ts.plot(times, Dedisp_ts,"k")
         ax_ts.set_xlim([times.min(),times.max()])
-    plt.setp(ax_ts.get_xticklabels(), visible = False)
-    plt.setp(ax_ts.get_yticklabels(), visible = False)
+        plt.setp(ax_ts.get_xticklabels(), visible = False)
+        plt.setp(ax_ts.get_yticklabels(), visible = False)
 
     # Plot Spectrum                                                             
     if integrate_spec:                                                         
