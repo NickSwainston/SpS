@@ -413,11 +413,11 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
     prof_ax.set_yticks([])
 
   # Plot dispersed dynamic spectrum
-  DM_delay = psr_utils.delay_from_DM(puls.DM, F_MIN) - psr_utils.delay_from_DM(puls.DM, F_MAX)
+  DM_delay = psr_utils.delay_from_DM(puls.DM, psrfits_file.freqs[0]) - psr_utils.delay_from_DM(puls.DM, psrfits_file.freqs[-1])
   start = puls.Time_org - 0.1
   duration = puls.Duration + DM_delay + 0.2
   ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, dm=0., nsub=32*3, downsamp=df*3, \
-      maskfn=maskfn, mask=mask, scaleindep=True, zerodm=True, bandpass_corr=True)
+      maskfn=args.mask, mask=mask, scaleindep=True, bandpass_corr=mask, zerodm=True)
   waterfaller.plot_waterfall(ds, start, duration, ax_im=ax2, interactive=False, sweep_dms=[puls.DM], puls_t=-0.1)
 
   return
