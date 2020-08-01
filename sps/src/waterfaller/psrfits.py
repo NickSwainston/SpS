@@ -65,9 +65,8 @@ def unpack_4bit(data):
 
 class PsrfitsFile(object):
     def __init__(self, psrfitsfn):
-        for fn in psrfitsfn:
-            if not os.path.isfile(fn):
-                raise ValueError("ERROR: File does not exist!\n\t({}})".format(fn))
+        if not os.path.isfile(psrfitsfn):
+            raise ValueError("ERROR: File does not exist!\n\t({}})".format(psrfitsfn))
         self.filename = psrfitsfn
         self.fits = pyfits.open(psrfitsfn, mode='readonly', memmap=True)
         self.specinfo = SpectraInfo(psrfitsfn) 
