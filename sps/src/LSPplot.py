@@ -401,7 +401,7 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=16, dm=puls.DM, width_bins=df, \
       maskfn=args.mask, mask=mask, scaleindep=False, bandpass_corr=mask, zerodm=True)
   puls_t = - puls.Duration * duration / 2.
-  waterfaller.plot_waterfall(ds, start, duration, ax_im=ax1, interactive=False, puls_t=puls_t)
+  waterfaller.plot_waterfall(ds, start, duration, ax_im=ax1, interactive=False)#, puls_t=puls_t)
   ax1.scatter(0., ax1.get_ylim[0], marker='^', s=50, c='r', lw=0.)
 
   # Plot pulse profile
