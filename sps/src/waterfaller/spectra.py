@@ -282,6 +282,8 @@ class Spectra(object):
                     tosmooth = np.concatenate([chan[-width:], \
                                 chan, chan[:width]])
                 elif padval=='mean':
+                    print("numspectr {}".format(self.numspectra))
+                    print("width {}".format(width))
                     tosmooth = np.ones(self.numspectra+width*2) * \
                                 np.mean(chan)
                     tosmooth[width:-width] = chan
