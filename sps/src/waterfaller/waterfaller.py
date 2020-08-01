@@ -191,7 +191,7 @@ def waterfall(rawdatafile, start, duration, dm=None, nbins=None, nsub=None,\
 
 def plot_waterfall(data, start, duration, 
                    integrate_ts=False, integrate_spec=False, show_cb=False, 
-                   cmap_str="gist_yarg", sweep_dms=[], sweep_posns=[],
+                   cmap_str="gist_yarg", sweep_dms=[], sweep_posns=None,
                    ax_im=None, ax_ts=None, ax_spec=None, interactive=True):
     """ I want a docstring too!
     """
