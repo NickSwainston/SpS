@@ -27,7 +27,6 @@ class Spectra(object):
         """
         self.numchans, self.numspectra = data.shape
         assert len(freqs)==self.numchans
-        self.numspectra = int(self.numspectra)
 
         self.freqs = freqs
         self.data = data.astype('float')
@@ -340,7 +339,7 @@ class Spectra(object):
             *** Downsampling is done in place ***
         """
         assert trim or not (self.numspectra % factor)
-        new_num_spectra = self.numspectra/factor
+        new_num_spectra = self.numspectra//factor
         num_to_trim = self.numspectra%factor
         self.trim(num_to_trim)
         self.data = np.array(np.column_stack([np.sum(subint, axis=1) for \
