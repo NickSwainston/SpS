@@ -115,6 +115,7 @@ class Spectra(object):
         assert (self.numchans % nsub) == 0
         assert (subdm is None) or (subdm >= 0)
         nchan_per_sub = self.numchans/nsub
+        print("freqs: {}".format(self.freqs))
         sub_hifreqs = self.freqs[np.arange(nsub)*nchan_per_sub]
         sub_lofreqs = self.freqs[(1+np.arange(nsub))*nchan_per_sub-1]
         sub_ctrfreqs = 0.5*(sub_hifreqs+sub_lofreqs)
