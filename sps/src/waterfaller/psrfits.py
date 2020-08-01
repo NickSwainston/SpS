@@ -237,6 +237,8 @@ class SpectraInfo:
         self.need_weight = False
         self.need_flipband = False
 
+        if not isinstance(filenames, list): 
+            filenames = [filenames]
         for ii, fn in enumerate(filenames):
             if not is_PSRFITS(fn):
                 raise ValueError("File '%s' does not appear to be PSRFITS!" % fn)
