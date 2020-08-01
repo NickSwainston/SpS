@@ -83,7 +83,7 @@ def puls_plot(pdf, puls, events, i, args):
   else:
     row = 1
   
-  if args.fits is not None: 
+  if (args.fits is not None) and (args.timeseries is not None): 
     col = 4
   else: 
     col = 3
@@ -110,10 +110,14 @@ def puls_plot(pdf, puls, events, i, args):
 
   # Dynamic spectra
   if args.fits is not None:
-    ax6 = plt.subplot(gs.new_subplotspec((1,3), 1, 1))
-    ax7 = plt.subplot(gs.new_subplotspec((0,3), 1, 1), sharey=ax6)
-    if args.timeseries is None: ax4 = plt.subplot(gs.new_subplotspec((0,2), 1, 1))
-    else: ax4 = None
+    if args.timeseries is None:
+      ax6 = plt.subplot(gs.new_subplotspec((1,1), 1, 1))
+      ax7 = plt.subplot(gs.new_subplotspec((1,2), 1, 1), sharey=ax6)
+      ax4 = plt.subplot(gs.new_subplotspec((1,0), 1, 1))
+    else:
+      ax6 = plt.subplot(gs.new_subplotspec((1,3), 1, 1))
+      ax7 = plt.subplot(gs.new_subplotspec((0,3), 1, 1), sharey=ax6)
+      ax4 = None
     puls_dynSpec(ax6, ax7, puls, args, prof_ax=ax4)
   
   pdf.savefig(bbox_inches='tight', dpi=200)
