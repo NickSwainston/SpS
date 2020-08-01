@@ -118,13 +118,13 @@ class Spectra(object):
         print("freqs: {}".format(self.freqs))
 
         mask_sub_hifreqs = []
-        for i in np.arange(numchans): mask_sub_hifreqs.append(i in np.arange(nsub)*nchan_per_sub)
+        for i in np.arange(self.numchans): mask_sub_hifreqs.append(i in np.arange(nsub)*nchan_per_sub)
         sub_hifreqs = self.freqs[mask_sub_hifreqs]
 
         mask_sub_lofreqs = []
-        for i in np.arange(numchans): mask_sub_lofreqs.append(i in (1+np.arange(nsub))*nchan_per_sub-1)
+        for i in np.arange(self.numchans): mask_sub_lofreqs.append(i in (1+np.arange(nsub))*nchan_per_sub-1)
         sub_lofreqs = self.freqs[mask_sub_lofreqs]
-        
+
         sub_ctrfreqs = 0.5*(sub_hifreqs+sub_lofreqs)
         
         if subdm is not None:
