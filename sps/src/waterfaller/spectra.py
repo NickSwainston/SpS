@@ -27,6 +27,7 @@ class Spectra(object):
         """
         self.numchans, self.numspectra = data.shape
         assert len(freqs)==self.numchans
+        self.numspectra = int(self.numspectra)
 
         self.freqs = freqs
         self.data = data.astype('float')
