@@ -413,6 +413,9 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   # Plot pulse profile
   if prof_ax is not None:
     prof = ds.data.mean(axis=1)
+    # Rotate profile by half
+    rot = len(prof)//2
+    prof = prof[rot:] + prof[:rot]
     prof_ax.plot(prof, 'k')
     prof_ax.set_xlim((0, prof.size))
     prof_ax.set_xticks([])
