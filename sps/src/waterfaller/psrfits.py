@@ -183,7 +183,6 @@ class PsrfitsFile(object):
         skip = startsamp - (startsub*self.nsamp_per_subint)
         endsub = int((startsamp+N)/self.nsamp_per_subint)
         trunc = ((endsub+1)*self.nsamp_per_subint) - (startsamp+N)
-        print(startsub, endsub)
         
         # Read data
         data = []
@@ -195,8 +194,6 @@ class PsrfitsFile(object):
             data = np.array(data).squeeze()
         data = np.transpose(data)
         # Truncate data to desired interval
-        print(data.shape)
-        print(skip,trunc)
         if trunc > 0:
                 data = data[:, skip:-trunc]
         elif trunc == 0:

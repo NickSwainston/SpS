@@ -115,7 +115,6 @@ class Spectra(object):
         assert (self.numchans % nsub) == 0
         assert (subdm is None) or (subdm >= 0)
         nchan_per_sub = self.numchans/nsub
-        print("freqs: {}".format(self.freqs))
 
         mask_sub_hifreqs = []
         for i in np.arange(self.numchans): mask_sub_hifreqs.append(i in np.arange(nsub)*nchan_per_sub)
@@ -282,8 +281,6 @@ class Spectra(object):
                     tosmooth = np.concatenate([chan[-width:], \
                                 chan, chan[:width]])
                 elif padval=='mean':
-                    print("numspectr {}".format(self.numspectra))
-                    print("width {}".format(width))
                     tosmooth = np.ones(self.numspectra+width*2) * \
                                 np.mean(chan)
                     tosmooth[width:-width] = chan
