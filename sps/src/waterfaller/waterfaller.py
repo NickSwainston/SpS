@@ -239,7 +239,7 @@ def plot_waterfall(data, start, duration,
             sweep_posn = sweep_posns[ii]
         sweepstart = data.dt*data.numspectra*sweep_posn+data.starttime
         sty = SWEEP_STYLES[ii%len(SWEEP_STYLES)]
-        ax_im.plot(delays+sweepstart, data.freqs, sty, lw=4, alpha=0.5)
+        ax_im.plot(delays+sweepstart, data.freqs, sty, lw=4, alpha=0.3)
 
     # Dressing it up
     ax_im.xaxis.get_major_formatter().set_useOffset(False)
