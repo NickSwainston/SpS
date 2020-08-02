@@ -397,12 +397,13 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
     mask = False
   duration = 20
   df = int(puls.Downfact)
+  nsub=48
   psrfits_file = psrfits.PsrfitsFile(args.fits)
 
   # Plot de-dispersed dynamic spectrum
   start = puls.Time_org - puls.Duration * duration / 2.
   duration = puls.Duration * (duration + 1)
-  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=32*3, dm=puls.DM,  downsamp=df,\
+  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=nsub, dm=puls.DM,  downsamp=nsub,\
       #width_bins=df, \
       maskfn=args.mask, mask=mask, scaleindep=False, bandpass_corr=mask, zerodm=True)
   puls_t = - puls.Duration * duration / 2.
@@ -422,7 +423,7 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   DM_delay = psr_utils.delay_from_DM(puls.DM, psrfits_file.freqs[0]) - psr_utils.delay_from_DM(puls.DM, psrfits_file.freqs[-1])
   start = puls.Time_org - 0.1
   duration = puls.Duration + DM_delay + 0.2
-  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=32*3, dm=0., downsamp=df*3, \
+  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=nsub, dm=0., downsamp=nsub, \
       maskfn=args.mask, mask=mask, scaleindep=True, bandpass_corr=mask, zerodm=True)
   waterfaller.plot_waterfall(ds, start, duration, ax_im=ax2, interactive=False, sweep_dms=[puls.DM])#, puls_t=-0.1)
 
