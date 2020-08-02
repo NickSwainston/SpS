@@ -385,7 +385,7 @@ class SpectraInfo:
                     self.hi_freq = freqs[-1]
                     # Now check that the channel spacing is the same throughout
                     ftmp = freqs[1:] - freqs[:-1]
-                    if np.any((ftmp - self.df)) > 1e-7:
+                    if np.any((ftmp - self.df)) > 1e-6:
                         warnings.warn("Channel spacing changes in file %d!" % ii)
                 else:
                     ftmp = np.abs(self.df - (freqs[1]-freqs[0]))
