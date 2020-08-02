@@ -408,14 +408,13 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
       maskfn=args.mask, mask=mask, scaleindep=False, bandpass_corr=mask, zerodm=True)
   #puls_t = - puls.Duration * duration / 2.
   waterfaller.plot_waterfall(ds, start, duration, ax_im=ax1, interactive=False)#, puls_t=puls_t)
-  ax1.scatter(puls.Time_org, ax1.get_ylim()[0], marker='^', s=50, c='r', lw=0.)
+  ax1.scatter(start, ax1.get_ylim()[0], marker='^', s=50, c='r', lw=0.)
 
   # Plot pulse profile
   if prof_ax is not None:
     prof = ds.data.mean(axis=1)
     # Rotate profile by half
-    rot = len(prof)//2
-    prof = prof[rot:] + prof[:rot]
+    prof = prof[prof.size//2:] + prof[:prof.size//2]
     prof_ax.plot(prof, 'k')
     prof_ax.set_xlim((0, prof.size))
     prof_ax.set_xticks([])
