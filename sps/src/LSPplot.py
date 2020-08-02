@@ -400,6 +400,7 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   nsub=48
   psrfits_file = psrfits.PsrfitsFile(args.fits)
 
+  print("puls.Duration {}".format(puls.Duration))
   # Plot de-dispersed dynamic spectrum
   start = puls.Time_org - puls.Duration * duration / 2.
   duration = puls.Duration * (duration + 1)
