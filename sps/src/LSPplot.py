@@ -408,8 +408,8 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   print("duration {}".format(duration))
   print("start {}".format(start))
   print("puls.Time_org {}".format(puls.Time_org))
-  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=nsub, dm=puls.DM,\
-      #width_bins=df, downsamp=df,\
+  ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=nsub, dm=puls.DM, downsamp=df,\
+      #width_bins=df,\
       maskfn=args.mask, mask=mask, scaleindep=False, bandpass_corr=mask, zerodm=True)
   #puls_t = - puls.Duration * duration / 2.
   waterfaller.plot_waterfall(ds, start, duration, ax_im=ax1, interactive=False)#, puls_t=puls_t)
