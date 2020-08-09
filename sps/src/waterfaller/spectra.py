@@ -309,9 +309,9 @@ class Spectra(object):
 
             *** Trimming is irreversible ***
         """
-        assert bins < self.numspectra
         if bins == 0:
             return
+        assert bins < self.numspectra
         elif bins > 0:
             self.data = self.data[:,:-bins]
             self.numspectra = self.numspectra-bins

@@ -404,10 +404,6 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   # Plot de-dispersed dynamic spectrum
   start = puls.Time_org - puls.Duration * duration / 2.
   duration = puls.Duration * (duration + 1)
-  print("puls.Duration {}".format(puls.Duration))
-  print("duration {}".format(duration))
-  print("start {}".format(start))
-  print("puls.Time_org {}".format(puls.Time_org))
   ds, nbinsextra, nbins, start = waterfaller.waterfall(psrfits_file, start, duration, nsub=nsub, dm=puls.DM, downsamp=df,\
       #width_bins=df,\
       maskfn=args.mask, mask=mask, scaleindep=False, bandpass_corr=mask, zerodm=True)
@@ -419,9 +415,7 @@ def puls_dynSpec(ax1, ax2, puls, args, prof_ax=None):
   if prof_ax is not None:
     prof = ds.data.mean(axis=1)
     # Rotate profile by half
-    print("prof before{}".format(prof))
     prof = np.roll(prof, prof.size//2)
-    print("prof after{}".format(prof))
     prof_ax.plot(prof, 'k')
     prof_ax.set_xlim((0, prof.size))
     prof_ax.set_xticks([])
