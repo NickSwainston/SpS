@@ -337,6 +337,7 @@ class Spectra(object):
         """
         assert trim or not (self.numspectra % factor)
         new_num_spectra = self.numspectra//factor
+        print("new_num_spectra: {}".format(new_num_spectra))
         num_to_trim = self.numspectra%factor
         self.trim(num_to_trim)
         self.data = np.array(np.column_stack([np.sum(subint, axis=1) for \
